@@ -84,6 +84,27 @@
       this.test();
       this.roleSearchAll();
       this.changePage();
+       const permissonManagement=_global.hasPermission('per_management');
+       const roleManagement=_global.hasPermission("role_management");
+       const userManagement=_global.hasPermission("user_management");
+       const menuMangement=_global.hasPermission("menu_management");
+       if(!roleManagement){
+         if(permissonManagement){
+           this.$router.push({
+             path:"/index/system/permittion"
+           });
+         }
+         if(userManagement){
+           this.$router.push({
+             path:"/index/system/user"
+           });
+         }
+         if(menuMangement){
+           this.$router.push({
+             path:"/index/system/menuList"
+           });
+         }
+       }
     },
     methods: {
       test(){
